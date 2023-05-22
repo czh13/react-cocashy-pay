@@ -1,16 +1,25 @@
-import axios from 'axios'
-import { showToast } from 'vant'
-import 'vant/es/toast/style'
+/*
+ * @Author: caizhihao
+ * @Date: 2023-05-22 18:05:40
+ * @LastEditors: caizhihao 177745994@qq.com
+ * @LastEditTime: 2023-05-22 18:31:28
+ * @FilePath: \react\react-cocashy-pay\src\utils\request.ts
+ * @Description: 
+ * 
+ */
+import axios,{AxiosInstance,AxiosRequestConfig,AxiosResponse} from 'axios'
 
-axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
-const service = axios.create({
+const service:AxiosInstance = axios.create({
 	baseURL: process.env.VUE_APP_URL, // url = base url + request url
 	withCredentials: false, // send cookies when cross-domain requests  当true时，必须在后端增加 response 头信息Access-Control-Allow-Origin，且必须指定域名，而不能指定为*。
 	timeout: 30000, // request timeout
+	headers: {
+		'Content-Type':'application/json;charset=utf-8'
+	}
 })
 
 // request interceptor
-service.interceptors.request.use(
+service.interceptors.request.use( 
 	config => {
 		try {
 			// 请求头
@@ -33,16 +42,16 @@ service.interceptors.response.use(
 			return res
 		} else {
 			!hideError &&
-				showToast({
-					message: res.msg,
-				})
+				// showToast({
+				// 	message: res.msg,
+				// })
 			// return Promise.reject(res)
 		}
 	},
 	error => {
-		showToast({
-			message: 'Network Error',
-		})
+		// showToast({
+		// 	message: 'Network Error',
+		// })
 		// return Promise.reject(error)
 	}
 )

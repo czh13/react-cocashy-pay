@@ -1,18 +1,24 @@
-import { showToast } from 'vant'
+/*
+ * @Author: caizhihao
+ * @Date: 2023-05-22 18:05:40
+ * @LastEditors: caizhihao 177745994@qq.com
+ * @LastEditTime: 2023-05-22 18:26:53
+ * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
+ * @Description:
+ *
+ */
 import 'vant/es/toast/style'
-import i18n from '@/lang/i18n'
 
-export const copyText = data => {
-	let oInput = document.createElement('input')
+export const copyText = (data: string) => {
+	const oInput = document.createElement('input')
 	oInput.value = data
 	document.body.appendChild(oInput)
 	oInput.select()
 	document.execCommand('Copy')
-	showToast(i18n.global.t('cashy.copyText'))
 	oInput.remove()
 }
 
-export function toThousands(num, pointLength) {
+export function toThousands(num: number, pointLength: number) {
 	num = Number(num)
 	if (!num) return 0
 	const _value = num.toString()
@@ -25,7 +31,7 @@ export function toThousands(num, pointLength) {
 }
 
 export function versionsFn() {
-	let u = navigator.userAgent
+	const u = navigator.userAgent
 	return {
 		trident: u.indexOf('Trident') > -1, //IE内核
 		presto: u.indexOf('Presto') > -1, //opera内核
@@ -39,15 +45,4 @@ export function versionsFn() {
 		Android: u.indexOf('Android') > -1, //Android终端
 		webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
 	}
-}
-
-export function getUrlParams(url) {
-	let urlStr = url.split('?')[1]
-	let obj = {}
-	let paramsArr = urlStr.split('&')
-	for (let i = 0, len = paramsArr.length; i < len; i++) {
-		let arr = paramsArr[i].split('=')
-		obj[arr[0]] = arr[1]
-	}
-	return obj
 }
