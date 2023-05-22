@@ -1,0 +1,47 @@
+@import "~normalize.css";
+
+
+@font-face {
+  font-family: SF-Pro-Text-Regular;
+  src: url('../SF-Pro-Text-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+body, html, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, header, menu, section, p, input, td, th, ins {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+a:hover {
+  color: #666;
+  text-decoration: none;
+}
+
+i, em {
+  font-style: normal;
+}
+
+input, textarea, button, select, a {
+  outline: none;
+  border: none;
+}
+
+
+
+
