@@ -1,6 +1,16 @@
-import request from '@/utils/request.js'
+/*
+ * @Author: caizhihao
+ * @Date: 2023-05-22 18:05:21
+ * @LastEditors: caizhihao 177745994@qq.com
+ * @LastEditTime: 2023-05-23 16:08:50
+ * @FilePath: \react\react-cocashy-pay\src\api\register.ts
+ * @Description:
+ *
+ */
+import { request } from '@/utils/request'
+import { GetOrderQuery } from './type'
 
-export function getOrder(query) {
+export function GetOrderQuery(query: GetOrderQuery) {
 	return request({
 		url: `/payDesk/getOrder`,
 		method: 'get',
