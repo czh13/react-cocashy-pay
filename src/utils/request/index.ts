@@ -12,7 +12,7 @@ import type { AxiosInstance, AxiosError } from 'axios'
 import { Toast } from 'antd-mobile'
 
 const service: AxiosInstance = axios.create({
-	baseURL: process.env.VUE_APP_URL,
+	baseURL: process.env.REACT_APP_URL,
 	withCredentials: false,
 	timeout: 30000,
 	headers: {

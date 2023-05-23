@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:40
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-22 18:26:53
+ * @LastEditTime: 2023-05-23 17:51:05
  * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
  * @Description:
  *
@@ -18,9 +18,9 @@ export const copyText = (data: string) => {
 	oInput.remove()
 }
 
-export function toThousands(num: number, pointLength: number) {
+export const toThousands = (num: number, pointLength: number) => {
 	num = Number(num)
-	if (!num) return 0
+	if (!num) return '0'
 	const _value = num.toString()
 	const tempArr = _value.split('.')
 	const startValue = tempArr[0].replace(/(\d)(?=(?:\d{3})+$)/g, '$1.')
@@ -30,7 +30,7 @@ export function toThousands(num: number, pointLength: number) {
 	return pointLength ? startValue + ',' + endValue : noDecimalPointValue
 }
 
-export function versionsFn() {
+export const versionsFn = () => {
 	const u = navigator.userAgent
 	return {
 		trident: u.indexOf('Trident') > -1, //IE内核

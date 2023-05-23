@@ -8,7 +8,7 @@
  *
  */
 import { request } from '@/utils/request'
-import { GetOrderQuery } from './type'
+import { GetOrderQuery, GetPayQuery } from './type'
 
 export function GetOrderQuery(query: GetOrderQuery) {
 	return request({
@@ -18,7 +18,7 @@ export function GetOrderQuery(query: GetOrderQuery) {
 	})
 }
 
-export function getPay(query) {
+export function getPay(query: GetPayQuery) {
 	return request({
 		url: `/payDesk/getPay`,
 		method: 'get',
@@ -26,42 +26,42 @@ export function getPay(query) {
 	})
 }
 
-export function getPayInOrder(query) {
-	return request({
-		url: `/payDesk/getPayInOrder`,
-		method: 'get',
-		params: query,
-	})
-}
+// export function getPayInOrder(query) {
+// 	return request({
+// 		url: `/payDesk/getPayInOrder`,
+// 		method: 'get',
+// 		params: query,
+// 	})
+// }
 
-export function getPushOrder(data) {
-	return request({
-		url: `/payDesk/pushOrder`,
-		method: 'post',
-		data,
-	})
-}
+// export function getPushOrder(data) {
+// 	return request({
+// 		url: `/payDesk/pushOrder`,
+// 		method: 'post',
+// 		data,
+// 	})
+// }
 
-export function payDeskPushOrder(data) {
-	return request({
-		url: `/payDesk/payDeskPushOrder`,
-		method: 'post',
-		data,
-	})
-}
+// export function payDeskPushOrder(data) {
+// 	return request({
+// 		url: `/payDesk/payDeskPushOrder`,
+// 		method: 'post',
+// 		data,
+// 	})
+// }
 
-export function generateOrder(data) {
-	return request({
-		url: `/payDesk/generateOrder`,
-		method: 'post',
-		data,
-	})
-}
+// export function generateOrder(data) {
+// 	return request({
+// 		url: `/payDesk/generateOrder`,
+// 		method: 'post',
+// 		data,
+// 	})
+// }
 
-export function generatePayOrder(data) {
-	return request({
-		url: `/payDesk/generatePayOrder`,
-		method: 'post',
-		data,
-	})
-}
+// export function generatePayOrder(data) {
+// 	return request({
+// 		url: `/payDesk/generatePayOrder`,
+// 		method: 'post',
+// 		data,
+// 	})
+// }
