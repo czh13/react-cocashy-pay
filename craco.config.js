@@ -2,22 +2,20 @@
  * @Author: caizhihao
  * @Date: 2023-05-22 11:30:54
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-23 20:23:34
+ * @LastEditTime: 2023-05-24 19:43:51
  * @FilePath: \react\react-cocashy-pay\craco.config.js
  * @Description:
  *
  */
 const path = require('path')
-
 const resolve = dir => path.resolve(__dirname, dir)
-
-const PostCssPxToViewportPlugin = require('postcss-px-to-viewport-8-plugin')
 
 module.exports = {
 	webpack: {
 		alias: {
 			'@': resolve('src'),
 			components: resolve('src/components'),
+			assets: resolve('src/assets'),
 		},
 	},
 	devServer: {
@@ -42,9 +40,10 @@ module.exports = {
 					ident: 'postcss',
 					plugins: [
 						[
-							PostCssPxToViewportPlugin({
-								viewportWidth: 360, // 视口宽度
-							}),
+							'postcss-px-to-viewport-8-plugin',
+							{
+								viewportWidth: 375, // 设计稿的视口宽度
+							},
 						],
 					],
 				},

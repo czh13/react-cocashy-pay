@@ -2,16 +2,16 @@
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:21
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-23 16:08:50
+ * @LastEditTime: 2023-05-25 15:27:04
  * @FilePath: \react\react-cocashy-pay\src\api\register.ts
  * @Description:
  *
  */
 import { request } from '@/utils/request'
-import { GetOrderQuery, GetPayQuery } from './type'
+import { GetOrderQuery, GetPayQuery, GetOrderRes } from './type'
 
-export function GetOrderQuery(query: GetOrderQuery) {
-	return request({
+export function GetOrder(query: GetOrderQuery) {
+	return request<GetOrderRes>({
 		url: `/payDesk/getOrder`,
 		method: 'get',
 		params: query,

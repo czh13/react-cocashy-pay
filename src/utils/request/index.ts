@@ -2,14 +2,15 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 14:20:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-23 17:46:59
+ * @LastEditTime: 2023-05-25 15:48:13
  * @FilePath: \react\react-cocashy-pay\src\utils\request\index.ts
  * @Description:
  *
  */
-import axios, { AxiosResponse, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
-import type { AxiosInstance, AxiosError } from 'axios'
+import axios from 'axios'
+import type { AxiosInstance, AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import { Toast } from 'antd-mobile'
+import { CAxiosRequestConfig, Result } from './type'
 
 const service: AxiosInstance = axios.create({
 	baseURL: process.env.REACT_APP_URL,
@@ -39,6 +40,7 @@ service.interceptors.response.use(
 	(response: AxiosResponse) => {
 		Toast.clear()
 		const result = response.data
+		console.log(result)
 		if (result.code === 200) {
 			return result
 		} else {
@@ -52,10 +54,20 @@ service.interceptors.response.use(
 	}
 )
 
-export const request = <T>({ url, method, ...config }: AxiosRequestConfig): Promise<T> => {
+export const request = <T>({ url, method, ...config }: CAxiosRequestConfig): Promise<Result<T>> => {
 	return service({
 		url,
 		method,
 		...config,
 	})
 }
+
+// export const http = {
+// 	get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
+// 		return service.get(url, config)
+// 	},
+
+// 	post<T = any>(url: string, data?: object, config?: AxiosRequestConfig): Promise<T> {
+// 		return service.post(url, data, config)
+// 	},
+// }
