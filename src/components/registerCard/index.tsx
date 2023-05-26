@@ -2,15 +2,17 @@
  * @Author: caizhihao
  * @Date: 2023-05-24 16:45:51
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-25 11:47:12
+ * @LastEditTime: 2023-05-26 14:20:11
  * @FilePath: \react\react-cocashy-pay\src\components\registerCard\index.tsx
  * @Description:
  *
  */
 // import bg_payment from '../../assets/img/bg_payment@2x.png'
+import { GetOrderRes } from '@/api/type'
 import styled from 'styled-components'
 
-export const RegisterCard = () => {
+export const RegisterCard = ({ registerData }: { registerData: GetOrderRes | null }) => {
+	console.log(registerData)
 	return (
 		// <RCContainer style={{ background: `url(${bg_payment}) no-repeat center/100%` }}>
 		<RCContainer>

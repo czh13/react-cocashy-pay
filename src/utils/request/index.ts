@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 14:20:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-25 15:48:13
+ * @LastEditTime: 2023-05-26 14:19:16
  * @FilePath: \react\react-cocashy-pay\src\utils\request\index.ts
  * @Description:
  *
@@ -24,13 +24,13 @@ const service: AxiosInstance = axios.create({
 // 请求拦截
 service.interceptors.request.use(
 	(config: InternalAxiosRequestConfig) => {
-		config.hideLoading = false && Toast.show({ icon: 'loading', maskClickable: false })
+		config.hideLoading && Toast.show({ icon: 'loading', maskClickable: false })
 		// 添加自定义请求头
 		config.headers && typeof config.headers?.set === 'function' && config.headers.set('Accept-Language', sessionStorage.getItem('lang') || 'en-ID', false)
 		return config
 	},
-	(error: AxiosError) => {
-		Toast.show({ content: error.message })
+	error => {
+		Toast.show({ content: error.msg })
 		return Promise.reject(error)
 	}
 )
@@ -38,18 +38,17 @@ service.interceptors.request.use(
 // 相应拦截
 service.interceptors.response.use(
 	(response: AxiosResponse) => {
-		Toast.clear()
 		const result = response.data
-		console.log(result)
 		if (result.code === 200) {
+			Toast.clear()
 			return result
 		} else {
-			!response.config.hideError && Toast.show({ content: result.message })
-			return Promise.reject(result)
+			!response.config.hideError && Toast.show({ content: result.msg })
+			return result
 		}
 	},
 	error => {
-		Toast.show({ content: error.message })
+		Toast.show({ content: error.msg })
 		return Promise.reject(error)
 	}
 )

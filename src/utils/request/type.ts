@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from 'axios'
 
 export interface Result<T = any> {
 	code: number
-	message: string
+	msg: string
 	data: T
 }
 
