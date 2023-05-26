@@ -2,29 +2,33 @@
  * @Author: caizhihao
  * @Date: 2023-05-24 16:45:51
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-26 14:20:11
+ * @LastEditTime: 2023-05-26 21:10:35
  * @FilePath: \react\react-cocashy-pay\src\components\registerCard\index.tsx
  * @Description:
  *
  */
 // import bg_payment from '../../assets/img/bg_payment@2x.png'
 import { GetOrderRes } from '@/api/type'
+import { toThousands } from '@/utils'
 import styled from 'styled-components'
 
-export const RegisterCard = ({ registerData }: { registerData: GetOrderRes | null }) => {
-	console.log(registerData)
+export const RegisterCard = ({ registerData }: { registerData: Partial<GetOrderRes> | null }) => {
+	console.log(registerData, 'cardInfo')
 	return (
 		// <RCContainer style={{ background: `url(${bg_payment}) no-repeat center/100%` }}>
 		<RCContainer>
 			<main>
 				<p>Total Payment</p>
-				<p>Rp 1.000.000</p>
+				<p>
+					{registerData?.currency}
+					{toThousands(Number(registerData?.amount), 3)}
+				</p>
 				<RCOrder>
 					<div>
 						<div></div>
 						<p>Order ID</p>
 					</div>
-					<p>3823929389938239293899323323</p>
+					<p>{registerData?.orderNo}</p>
 				</RCOrder>
 			</main>
 		</RCContainer>
@@ -35,7 +39,7 @@ const RCContainer = styled.section`
 	background: url(${require('../../assets/img/bg_payment@2x.png')}) no-repeat center/100%;
 	padding: 0 0.23rem;
 	> main {
-		padding: 0.28rem 0;
+		padding: 0.24rem 0 0.18rem 0;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
@@ -60,6 +64,7 @@ const RCOrder = styled.div`
 	justify-content: space-between;
 	font-size: 0.15rem;
 	color: rgba(0, 0, 0, 0.5);
+	min-height: 0.36rem;
 	> div {
 		display: flex;
 		align-items: center;

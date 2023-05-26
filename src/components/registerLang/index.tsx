@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-25 11:54:01
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-25 11:57:05
+ * @LastEditTime: 2023-05-26 21:10:50
  * @FilePath: \react\react-cocashy-pay\src\components\registerLang\index.tsx
  * @Description:
  *
@@ -12,16 +12,17 @@ import bar_icon_cut from '@/assets/img/bar_icon_cut@2x.png'
 import { Popover } from 'antd-mobile'
 import { Action } from 'antd-mobile/es/components/popover'
 import { RegisterLangContainer } from './css'
+import { GetOrderRes } from '@/api/type'
 
-export const RegisterLang = () => {
+export const RegisterLang = ({ registerData }: { registerData: Partial<GetOrderRes> | null }) => {
 	const actions: Action[] = [{ key: 'en-ID', text: 'Indonesian' }]
 
 	const handleAction = (node: Partial<Action>) => {
 		console.log(node)
 	}
 	return (
-		<section>
-			<RegisterLangContainer>
+		<RegisterLangContainer>
+			<div className="rl_language">
 				<img src={ico_language} alt="" />
 				<Popover.Menu actions={actions} placement="bottom-start" onAction={handleAction} trigger="click">
 					<div className="rl_main">
@@ -29,8 +30,8 @@ export const RegisterLang = () => {
 						<img src={bar_icon_cut} alt="" />
 					</div>
 				</Popover.Menu>
-			</RegisterLangContainer>
+			</div>
 			<div className="rl_time">2:59:50</div>
-		</section>
+		</RegisterLangContainer>
 	)
 }

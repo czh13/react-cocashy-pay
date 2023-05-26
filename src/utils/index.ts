@@ -2,13 +2,11 @@
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:40
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-23 17:51:05
+ * @LastEditTime: 2023-05-26 15:35:49
  * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
  * @Description:
  *
  */
-import 'vant/es/toast/style'
-
 export const copyText = (data: string) => {
 	const oInput = document.createElement('input')
 	oInput.value = data
@@ -19,7 +17,6 @@ export const copyText = (data: string) => {
 }
 
 export const toThousands = (num: number, pointLength: number) => {
-	num = Number(num)
 	if (!num) return '0'
 	const _value = num.toString()
 	const tempArr = _value.split('.')
