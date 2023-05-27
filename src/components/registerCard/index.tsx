@@ -12,23 +12,23 @@ import { GetOrderRes } from '@/api/type'
 import { toThousands } from '@/utils'
 import styled from 'styled-components'
 
-export const RegisterCard = ({ registerData }: { registerData: Partial<GetOrderRes> | null }) => {
-	console.log(registerData, 'cardInfo')
+export const RegisterCard = ({ cardInfo }: { cardInfo: Partial<GetOrderRes> | null }) => {
+	console.log(cardInfo, 'cardInfo')
 	return (
 		// <RCContainer style={{ background: `url(${bg_payment}) no-repeat center/100%` }}>
 		<RCContainer>
 			<main>
 				<p>Total Payment</p>
 				<p>
-					{registerData?.currency}
-					{toThousands(Number(registerData?.amount), 3)}
+					{cardInfo?.currency}
+					{toThousands(Number(cardInfo?.amount), 3)}
 				</p>
 				<RCOrder>
 					<div>
 						<div></div>
 						<p>Order ID</p>
 					</div>
-					<p>{registerData?.orderNo}</p>
+					<p>{cardInfo?.orderNo}</p>
 				</RCOrder>
 			</main>
 		</RCContainer>

@@ -1,5 +1,5 @@
 import { GetOrderRes } from '@/api/type'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { GetOrder } from '../../api/register'
 import { CardInfo, ListType } from './type'
@@ -7,7 +7,7 @@ import { CardInfo, ListType } from './type'
  * @Author: caizhihao
  * @Date: 2023-05-25 11:59:24
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-26 20:57:48
+ * @LastEditTime: 2023-05-27 14:22:14
  * @FilePath: \react\react-cocashy-pay\src\views\register\utils.ts
  * @Description:
  *
@@ -77,4 +77,9 @@ export const useGetMethodList = (payProCodeList: string[]) => {
 	methodInfoList[2].list = payProCodeList.map(i => marketList.filter(item => item.code === i)[0]).filter(Boolean) || [...marketList]
 
 	return methodInfoList
+}
+
+export const useGetOrderStatus = async (orderNo: string) => {
+	const { data } = await GetOrder({ orderNo })
+	return data.orderStatus
 }

@@ -1,12 +1,16 @@
+import { useEffect, useRef } from 'react'
+
 /*
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:40
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-26 15:35:49
+ * @LastEditTime: 2023-05-27 12:16:36
  * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
  * @Description:
  *
  */
+
+// 复制文斌
 export const copyText = (data: string) => {
 	const oInput = document.createElement('input')
 	oInput.value = data
@@ -16,6 +20,7 @@ export const copyText = (data: string) => {
 	oInput.remove()
 }
 
+//千分位
 export const toThousands = (num: number, pointLength: number) => {
 	if (!num) return '0'
 	const _value = num.toString()
@@ -27,6 +32,40 @@ export const toThousands = (num: number, pointLength: number) => {
 	return pointLength ? startValue + ',' + endValue : noDecimalPointValue
 }
 
+// 只执行一次生命周期
+export const useMount = (callback: () => void) => {
+	useEffect(() => {
+		callback()
+	}, []) //依赖项加上callback,会无限循环,这个和usecallback和usememo有关系
+}
+
+// 定时器
+export const useInterval = (fn: () => void, delay = 10000, immediate = true): [clearIntervalHandler: () => void] => {
+	const timerRef = useRef<number>()
+
+	const clearIntervalHandler = () => {
+		if (timerRef.current) {
+			clearInterval(timerRef.current)
+		}
+	}
+	useEffect(() => {
+		if (typeof delay !== 'number' || delay < 0) return
+		if (immediate) {
+			fn()
+		}
+		//setInterval使用window对象，返回的是number类型
+		timerRef.current = window.setInterval(() => {
+			fn()
+		}, delay)
+		return () => {
+			clearInterval(timerRef.current)
+		}
+	}, [delay, fn])
+
+	return [clearIntervalHandler]
+}
+
+// 游览器版本
 export const versionsFn = () => {
 	const u = navigator.userAgent
 	return {

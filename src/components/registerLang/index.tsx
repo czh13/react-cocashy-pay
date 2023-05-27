@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-25 11:54:01
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-26 21:10:50
+ * @LastEditTime: 2023-05-27 09:49:48
  * @FilePath: \react\react-cocashy-pay\src\components\registerLang\index.tsx
  * @Description:
  *
@@ -14,7 +14,7 @@ import { Action } from 'antd-mobile/es/components/popover'
 import { RegisterLangContainer } from './css'
 import { GetOrderRes } from '@/api/type'
 
-export const RegisterLang = ({ registerData }: { registerData: Partial<GetOrderRes> | null }) => {
+export const RegisterLang = ({ cardInfo }: { cardInfo: Partial<GetOrderRes> | null }) => {
 	const actions: Action[] = [{ key: 'en-ID', text: 'Indonesian' }]
 
 	const handleAction = (node: Partial<Action>) => {
