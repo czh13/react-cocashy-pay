@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:40
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-27 12:16:36
+ * @LastEditTime: 2023-05-29 20:15:30
  * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
  * @Description:
  *
@@ -40,7 +40,7 @@ export const useMount = (callback: () => void) => {
 }
 
 // 定时器
-export const useInterval = (fn: () => void, delay = 10000, immediate = true): [clearIntervalHandler: () => void] => {
+export const useInterval = (fn: () => void, delay = 10000, immediate = false): [clearIntervalHandler: () => void] => {
 	const timerRef = useRef<number>()
 
 	const clearIntervalHandler = () => {

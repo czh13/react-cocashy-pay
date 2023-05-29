@@ -2,13 +2,13 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 16:06:58
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-25 14:40:16
+ * @LastEditTime: 2023-05-29 21:06:06
  * @FilePath: \react\react-cocashy-pay\src\api\type.ts
  * @Description:
  *
  */
 export interface GetOrderQuery {
-	orderNo: string | undefined
+	orderNo: string
 }
 
 export interface GetPayQuery {
@@ -30,5 +30,19 @@ export interface GetOrderRes {
 	orderStatus: string
 	returnUrl?: any
 	expireSeconds: number
+	errorCode?: any
+}
+
+export interface GetPayRes {
+	mchOrderNo: string
+	orderNo: string
+	payCode: string
+	payProCode: string
+	qrCodeType: string
+	pushNumber?: any
+	amount: string
+	expireSeconds: number
+	redirectParams?: any
+	returnType?: any
 	errorCode?: any
 }

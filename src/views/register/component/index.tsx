@@ -1,20 +1,49 @@
-import { ListType } from '../type'
-import styled from 'styled-components'
 /*
  * @Author: caizhihao
  * @Date: 2023-05-26 18:12:17
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-27 10:21:22
+ * @LastEditTime: 2023-05-29 21:22:38
  * @FilePath: \react\react-cocashy-pay\src\views\register\component\index.tsx
  * @Description:
  *
  */
-export const PayMethod = ({ list }: { list: ListType[] }) => {
+import { ListType } from '../type'
+import { MethodTypeContainer } from './css'
+import { useParams, useNavigate } from 'react-router-dom'
+import { GetOrder, getPay } from '@/api/register'
+
+export const PayMethod = ({ list, clearIntervalHandler, setOrederStatus }: { list: ListType[]; clearIntervalHandler: () => void; setOrederStatus: (s: string) => void }) => {
+	const { orderNo } = useParams()
+	const navigate = useNavigate()
+	const handleDetail = (payProCode: string) => {
+		// 跳转前判断该订单是否已支付成功
+		const checkStatus = async () => {
+			const { data } = await GetOrder({ orderNo: orderNo! })
+			if (data.orderStatus === 'SUCCESS') {
+				clearIntervalHandler()
+				setOrederStatus(data.orderStatus)
+			}
+		}
+
+		// 跳转前判断该支付方式是否存在
+		const checkOrder = async () => {
+			const { data } = await getPay({ payProCode, orderNo: orderNo! })
+			if (data.returnType === '1') {
+				window.location.href = data.payCode
+			} else {
+				navigate('/detail')
+			}
+		}
+
+		checkStatus()
+		checkOrder()
+	}
+
 	return (
 		<MethodTypeContainer>
 			{list.map(item => {
 				return (
-					<div key={item.code} className="pm_type">
+					<div key={item.code} className="pm_type" onClick={() => handleDetail(item.code)}>
 						<img src={item.imgUrl} alt="" />
 						<p>{item.name}</p>
 					</div>
@@ -23,32 +52,3 @@ export const PayMethod = ({ list }: { list: ListType[] }) => {
 		</MethodTypeContainer>
 	)
 }
-
-const MethodTypeContainer = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	flex: 1;
-	width: 100%;
-	.pm_type {
-		width: 47%;
-		display: flex;
-		align-items: center;
-		background: #f7f7f9;
-		border-radius: 6px;
-		padding: 6px;
-		box-sizing: border-box;
-		margin-bottom: 10px;
-		> img {
-			width: 0.33rem;
-			height: 0.33rem;
-		}
-		> p {
-			white-space: nowrap;
-			font-size: 0.15rem;
-			color: rgba(0, 0, 0, 0.9);
-			margin-left: 0.1rem;
-		}
-	}
-`
