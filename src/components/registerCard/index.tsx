@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-24 16:45:51
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-30 16:48:50
+ * @LastEditTime: 2023-05-30 19:39:11
  * @FilePath: \react\react-cocashy-pay\src\components\registerCard\index.tsx
  * @Description:
  *
@@ -28,7 +28,7 @@ export const RegisterCard = ({ cardInfo }: { cardInfo: Partial<GetOrderRes> | nu
 						<div></div>
 						<p>Order ID</p>
 					</div>
-					<p>{cardInfo?.orderNo}</p>
+					<p>{cardInfo?.mchOrderNo}</p>
 				</RCOrder>
 			</main>
 		</RCContainer>

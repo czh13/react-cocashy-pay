@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { ITime, ICbTime } from './type'
 
 /*
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:40
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-29 20:15:30
+ * @LastEditTime: 2023-05-30 21:11:15
  * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
  * @Description:
  *
@@ -81,4 +82,52 @@ export const versionsFn = () => {
 		Android: u.indexOf('Android') > -1, //Android终端
 		webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
 	}
+}
+
+export const useCountDown = (differTime = 0, callback: () => void, isImmediate = false): ICbTime => {
+	const [diffTime, setDiffTime] = useState<number>(0) //需要倒计时的时间
+
+	const entryTime = useRef<number>(0) //组件接收到参数时的时间
+	const finalTime = useRef<number>(0) //当前倒计时要求的时间差
+	const isImplementCb = useRef<boolean>(false) //是否可以执行回调
+
+	// 定时器倒计时
+	const [clearIntervalHandler] = useInterval(
+		() => {
+			const curtTimes = new Date().getTime() //
+			const TimeDifference = curtTimes - entryTime.current
+			setDiffTime(finalTime.current - TimeDifference)
+		},
+		diffTime <= 0 ? undefined : 1000 //1秒
+	)
+
+	useEffect(() => {
+		if (!isImplementCb.current) {
+			isImplementCb.current = true //默认允许执行回调
+		}
+		if (differTime > 0) {
+			entryTime.current = new Date().getTime()
+			finalTime.current = differTime //获取需要倒计时的时间
+			if (finalTime.current <= 0 && isImmediate) {
+				isImplementCb.current = false //如果倒计时是负数，就不执行了
+			}
+			setDiffTime(finalTime.current) //将倒计时的时间复制到state
+		}
+	}, [differTime])
+
+	const timeObj = useMemo(() => {
+		const time = diffTime > 0 ? diffTime / 1000 : 0
+		const h = Math.floor((time / (60 * 60)) % 24)
+		const m = Math.floor((time / 60) % 60)
+		const s = Math.ceil(time % 60)
+
+		// 时间走完，计时结束需要做的事情
+		if (diffTime <= 0 && isImplementCb.current) {
+			clearIntervalHandler()
+			callback?.()
+		}
+		return { h, m, s }
+	}, [diffTime])
+
+	return timeObj || ({} as ICbTime)
 }

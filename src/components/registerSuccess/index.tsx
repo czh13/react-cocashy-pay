@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-29 20:10:19
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-30 16:45:49
+ * @LastEditTime: 2023-05-30 17:16:58
  * @FilePath: \react\react-cocashy-pay\src\components\registerSuccess\index.tsx
  * @Description:
  *
@@ -42,17 +42,17 @@ export const RegisteSuccessContainer = styled.main`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 6px 6px 13px 6px;
+	padding: 0.06rem 0.06rem 0.13rem 0.06rem;
 	box-sizing: border-box;
 	> img {
-		width: 129px;
-		height: 143px;
+		width: 1.29rem;
+		height: 1.43rem;
 	}
 	> p {
-		font-size: 23px;
+		font-size: 0.23rem;
 		font-weight: bold;
 		color: rgba(0, 0, 0, 0.9);
-		margin-bottom: 34px;
+		margin-bottom: 0.34rem;
 	}
 	> div {
 		align-self: flex-start;
@@ -60,19 +60,19 @@ export const RegisteSuccessContainer = styled.main`
 		.rsc_item {
 			display: flex;
 			justify-content: space-between;
-			padding: 6px;
-			font-size: 15px;
+			padding: 0.06rem;
+			font-size: 0.15rem;
 			color: rgba(0, 0, 0, 0.5);
 			> div {
 				display: flex;
 				align-items: center;
-				margin-bottom: 6px;
+				margin-bottom: 0.06rem;
 				> div {
-					width: 8px;
-					height: 8px;
+					width: 0.08rem;
+					height: 0.08rem;
 					background: #3180ff;
 					border-radius: 50%;
-					margin-right: 10px;
+					margin-right: 0.1rem;
 				}
 			}
 		}
