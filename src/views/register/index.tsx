@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-29 21:26:32
+ * @LastEditTime: 2023-05-30 16:54:19
  * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
@@ -28,6 +28,15 @@ export const Register = () => {
 	const [orederStatus, setOrederStatus] = useState('PAYING')
 	const info = registerData && useCardInfo(registerData)
 	const methodInfoList = registerData && useGetMethodList(registerData.payProCodeList)
+	// 定时循环
+	const [clearIntervalHandler] = useInterval(async () => {
+		const { data } = await GetOrder({ orderNo: orderNo! })
+		if (data?.orderStatus === 'SUCCESS') {
+			clearIntervalHandler()
+			setOrederStatus(data.orderStatus)
+			useCardInfo(data)
+		}
+	}, 10000)
 
 	// 副作用
 	useEffect(() => {
@@ -38,26 +47,20 @@ export const Register = () => {
 	useEffect(() => {
 		const getOrder = async () => {
 			Toast.show({ icon: 'loading', maskClickable: false })
-			const { data } = await GetOrder({ orderNo: orderNo! })
+			const { data, code } = await GetOrder({ orderNo: orderNo! })
 			Toast.clear()
+			if (code !== 200) {
+				clearIntervalHandler()
+			}
+
 			setRegisterData(data)
-			if (data.orderStatus === 'SUCCESS') {
+			if (data?.orderStatus === 'SUCCESS') {
 				setOrederStatus(data.orderStatus)
 				useCardInfo(data)
 			}
 		}
 		getOrder()
 	}, [orderNo])
-
-	// 定时循环
-	const [clearIntervalHandler] = useInterval(async () => {
-		const { data } = await GetOrder({ orderNo: orderNo! })
-		if (data.orderStatus === 'SUCCESS') {
-			clearIntervalHandler()
-			setOrederStatus(data.orderStatus)
-			useCardInfo(data)
-		}
-	}, 10000)
 
 	return (
 		<>
@@ -85,7 +88,7 @@ export const Register = () => {
 							</>
 						</MethodContainer>
 					) : (
-						<RegisteSuccess />
+						<RegisteSuccess cardInfo={cardInfo} />
 					)}
 				</RegisterContainer>
 			) : (

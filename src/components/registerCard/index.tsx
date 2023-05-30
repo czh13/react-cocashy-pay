@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-24 16:45:51
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-26 21:10:35
+ * @LastEditTime: 2023-05-30 16:48:50
  * @FilePath: \react\react-cocashy-pay\src\components\registerCard\index.tsx
  * @Description:
  *
@@ -38,6 +38,7 @@ export const RegisterCard = ({ cardInfo }: { cardInfo: Partial<GetOrderRes> | nu
 const RCContainer = styled.section`
 	background: url(${require('../../assets/img/bg_payment@2x.png')}) no-repeat center/100%;
 	padding: 0 0.23rem;
+	width: 100%;
 	> main {
 		padding: 0.24rem 0 0.18rem 0;
 		display: flex;

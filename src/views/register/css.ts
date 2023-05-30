@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-25 11:52:12
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-27 10:19:42
+ * @LastEditTime: 2023-05-30 17:05:04
  * @FilePath: \react\react-cocashy-pay\src\views\register\css.ts
  * @Description:
  *
@@ -19,6 +19,7 @@ export const RegisterContainer = styled.div`
 	width: 100%;
 	padding: 0 0.15rem;
 	box-sizing: border-box;
+	align-items: center;
 `
 export const MethodContainer = styled.section`
 	display: flex;

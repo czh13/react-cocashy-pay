@@ -2,17 +2,18 @@
  * @Author: caizhihao
  * @Date: 2023-05-25 11:52:12
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-26 20:41:55
+ * @LastEditTime: 2023-05-30 16:48:42
  * @FilePath: \react\react-cocashy-pay\src\components\registerLang\css.ts
  * @Description:
  *
  */
 import styled from 'styled-components'
 
-export const RegisterLangContainer = styled.div`
+export const RegisterLangContainer = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	width: 100%;
 	.rl_language {
 		display: flex;
 		align-items: center;
