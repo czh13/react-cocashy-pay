@@ -5,7 +5,7 @@ import { ITime, ICbTime } from './type'
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:40
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-30 21:11:15
+ * @LastEditTime: 2023-05-31 10:10:19
  * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
  * @Description:
  *
@@ -84,6 +84,7 @@ export const versionsFn = () => {
 	}
 }
 
+// 倒计数
 export const useCountDown = (differTime = 0, callback: () => void, isImmediate = false): ICbTime => {
 	const [diffTime, setDiffTime] = useState<number>(0) //需要倒计时的时间
 
@@ -107,7 +108,7 @@ export const useCountDown = (differTime = 0, callback: () => void, isImmediate =
 		}
 		if (differTime > 0) {
 			entryTime.current = new Date().getTime()
-			finalTime.current = differTime //获取需要倒计时的时间
+			finalTime.current = differTime * 1000 //获取需要倒计时的时间
 			if (finalTime.current <= 0 && isImmediate) {
 				isImplementCb.current = false //如果倒计时是负数，就不执行了
 			}
@@ -124,7 +125,9 @@ export const useCountDown = (differTime = 0, callback: () => void, isImmediate =
 		// 时间走完，计时结束需要做的事情
 		if (diffTime <= 0 && isImplementCb.current) {
 			clearIntervalHandler()
-			callback?.()
+			setTimeout(() => {
+				callback?.()
+			}, 0)
 		}
 		return { h, m, s }
 	}, [diffTime])

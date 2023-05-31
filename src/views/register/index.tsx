@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-30 20:14:02
+ * @LastEditTime: 2023-05-31 14:31:23
  * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
@@ -50,7 +50,7 @@ export const Register = () => {
 	// 副作用
 	useEffect(() => {
 		const getOrder = async () => {
-			Toast.show({ icon: 'loading', maskClickable: false })
+			Toast.show({ icon: 'loading', maskClickable: false, duration: 0 })
 			const { data, code } = await GetOrder({ orderNo: orderNo! })
 			Toast.clear()
 			if (code !== 200) {
@@ -73,8 +73,8 @@ export const Register = () => {
 			</div> */}
 			{registerData && orderNo ? (
 				<RegisterContainer>
-					<RegisterLang cardInfo={cardInfo} setRegisterData={setRegisterData}></RegisterLang>
-					<RegisterCard cardInfo={cardInfo}></RegisterCard>
+					<RegisterLang cardInfo={cardInfo} setRegisterData={setRegisterData} />
+					<RegisterCard cardInfo={cardInfo} />
 					{orederStatus === 'PAYING' ? (
 						<MethodContainer>
 							<>

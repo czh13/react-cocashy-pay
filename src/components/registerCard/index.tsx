@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-24 16:45:51
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-30 19:39:11
+ * @LastEditTime: 2023-05-31 12:07:48
  * @FilePath: \react\react-cocashy-pay\src\components\registerCard\index.tsx
  * @Description:
  *
@@ -13,15 +13,13 @@ import { toThousands } from '@/utils'
 import styled from 'styled-components'
 
 export const RegisterCard = ({ cardInfo }: { cardInfo: Partial<GetOrderRes> | null }) => {
-	console.log(cardInfo, 'cardInfo')
 	return (
-		// <RCContainer style={{ background: `url(${bg_payment}) no-repeat center/100%` }}>
 		<RCContainer>
 			<main>
 				<p>Total Payment</p>
 				<p>
-					{cardInfo?.currency}
-					{toThousands(Number(cardInfo?.amount), 3)}
+					{cardInfo?.currency || 'Rp'}
+					{toThousands(Number(cardInfo?.amount), 0)}
 				</p>
 				<RCOrder>
 					<div>

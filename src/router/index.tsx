@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:36:09
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-29 21:18:28
+ * @LastEditTime: 2023-05-31 18:14:57
  * @FilePath: \react\react-cocashy-pay\src\router\index.tsx
  * @Description:
  *
@@ -22,7 +22,7 @@ export const rootRouter: RouteObject[] = [
 		element: <Register />,
 	},
 	{
-		path: '/detail',
+		path: '/pay',
 		element: <Detail />,
 	},
 ]

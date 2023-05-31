@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:21
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-29 21:22:56
+ * @LastEditTime: 2023-05-31 18:18:30
  * @FilePath: \react\react-cocashy-pay\src\api\register.ts
  * @Description:
  *
@@ -27,29 +27,29 @@ export function getPay(query: GetPayQuery) {
 	})
 }
 
-// export function getPayInOrder(query) {
-// 	return request({
-// 		url: `/payDesk/getPayInOrder`,
-// 		method: 'get',
-// 		params: query,
-// 	})
-// }
+export function getPayInOrder(query) {
+	return request({
+		url: `/payDesk/getPayInOrder`,
+		method: 'get',
+		params: query,
+	})
+}
 
-// export function getPushOrder(data) {
-// 	return request({
-// 		url: `/payDesk/pushOrder`,
-// 		method: 'post',
-// 		data,
-// 	})
-// }
+export function getPushOrder(data) {
+	return request({
+		url: `/payDesk/pushOrder`,
+		method: 'post',
+		data,
+	})
+}
 
-// export function payDeskPushOrder(data) {
-// 	return request({
-// 		url: `/payDesk/payDeskPushOrder`,
-// 		method: 'post',
-// 		data,
-// 	})
-// }
+export function payDeskPushOrder(data) {
+	return request({
+		url: `/payDesk/payDeskPushOrder`,
+		method: 'post',
+		data,
+	})
+}
 
 // export function generateOrder(data) {
 // 	return request({

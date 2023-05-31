@@ -2,13 +2,13 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 14:20:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-26 14:19:16
+ * @LastEditTime: 2023-05-31 16:42:50
  * @FilePath: \react\react-cocashy-pay\src\utils\request\index.ts
  * @Description:
  *
  */
 import axios from 'axios'
-import type { AxiosInstance, AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
+import type { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import { Toast } from 'antd-mobile'
 import { CAxiosRequestConfig, Result } from './type'
 

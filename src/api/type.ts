@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 16:06:58
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-29 21:06:06
+ * @LastEditTime: 2023-05-31 18:02:49
  * @FilePath: \react\react-cocashy-pay\src\api\type.ts
  * @Description:
  *
@@ -39,10 +39,10 @@ export interface GetPayRes {
 	payCode: string
 	payProCode: string
 	qrCodeType: string
-	pushNumber?: any
+	pushNumber?: string
 	amount: string
 	expireSeconds: number
 	redirectParams?: any
-	returnType?: any
+	returnType?: string
 	errorCode?: any
 }

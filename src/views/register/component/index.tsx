@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-26 18:12:17
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-29 21:22:38
+ * @LastEditTime: 2023-05-31 18:15:11
  * @FilePath: \react\react-cocashy-pay\src\views\register\component\index.tsx
  * @Description:
  *
@@ -27,11 +27,22 @@ export const PayMethod = ({ list, clearIntervalHandler, setOrederStatus }: { lis
 
 		// 跳转前判断该支付方式是否存在
 		const checkOrder = async () => {
-			const { data } = await getPay({ payProCode, orderNo: orderNo! })
+			const { data, code } = await getPay({ payProCode, orderNo: orderNo! })
+			if (code !== 200) {
+				return clearIntervalHandler()
+			}
 			if (data.returnType === '1') {
 				window.location.href = data.payCode
 			} else {
-				navigate('/detail')
+				// 参数不会展示在url
+				navigate('/pay', {
+					state: {
+						detail: data,
+					},
+				})
+				// 参数会展示在url上
+				// navigate(`/detail?data=${JSON.stringify(data)}`)
+				// navigate(`/detail/${JSON.stringify(data)}`)
 			}
 		}
 
