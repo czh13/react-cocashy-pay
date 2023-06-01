@@ -2,15 +2,16 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:36:09
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-31 18:14:57
+ * @LastEditTime: 2023-06-01 16:15:18
  * @FilePath: \react\react-cocashy-pay\src\router\index.tsx
  * @Description:
  *
  */
 import { useRoutes, Navigate } from 'react-router-dom'
-import { Register } from '@/views/register'
 import { RouteObject } from './type'
-import { Detail } from '@/views/detail'
+import { Register } from '@/views/register'
+import { Pay } from '@/views/pay'
+import { Middle } from '../views/middle/index'
 
 export const rootRouter: RouteObject[] = [
 	{
@@ -22,8 +23,12 @@ export const rootRouter: RouteObject[] = [
 		element: <Register />,
 	},
 	{
-		path: '/pay',
-		element: <Detail />,
+		path: '/pay/:orderNo?',
+		element: <Pay />,
+	},
+	{
+		path: '/middle',
+		element: <Middle />,
 	},
 ]
 

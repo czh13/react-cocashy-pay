@@ -2,13 +2,13 @@
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:21
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-31 18:18:30
+ * @LastEditTime: 2023-06-01 12:08:46
  * @FilePath: \react\react-cocashy-pay\src\api\register.ts
  * @Description:
  *
  */
 import { request } from '@/utils/request'
-import { GetOrderQuery, GetPayQuery, GetOrderRes, GetPayRes } from './type'
+import { GetOrderQuery, GetPayQuery, GetOrderRes, GetPayRes, PushOrderRes, PushOrder, GetPayOrderRes } from './type'
 
 export function GetOrder(query: GetOrderQuery) {
 	return request<GetOrderRes>({
@@ -27,15 +27,15 @@ export function getPay(query: GetPayQuery) {
 	})
 }
 
-export function getPayInOrder(query) {
-	return request({
+export function getPayInOrder(query: GetOrderQuery) {
+	return request<GetPayOrderRes>({
 		url: `/payDesk/getPayInOrder`,
 		method: 'get',
 		params: query,
 	})
 }
 
-export function getPushOrder(data) {
+export function getPushOrder(data: PushOrder) {
 	return request({
 		url: `/payDesk/pushOrder`,
 		method: 'post',
@@ -43,8 +43,8 @@ export function getPushOrder(data) {
 	})
 }
 
-export function payDeskPushOrder(data) {
-	return request({
+export function payDeskPushOrder(data: PushOrder) {
+	return request<PushOrderRes>({
 		url: `/payDesk/payDeskPushOrder`,
 		method: 'post',
 		data,

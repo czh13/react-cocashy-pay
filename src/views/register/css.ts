@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-25 11:52:12
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-30 18:11:43
+ * @LastEditTime: 2023-06-01 16:28:21
  * @FilePath: \react\react-cocashy-pay\src\views\register\css.ts
  * @Description:
  *

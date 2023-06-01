@@ -2,8 +2,8 @@
  * @Author: caizhihao
  * @Date: 2023-05-31 12:09:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-31 17:54:47
- * @FilePath: \react\react-cocashy-pay\src\views\detail\component\OVO\css.ts
+ * @LastEditTime: 2023-06-01 17:15:29
+ * @FilePath: \react\react-cocashy-pay\src\views\pay\component\OVO\css.ts
  * @Description:
  *
  */
@@ -11,7 +11,7 @@ import { Input, Button } from 'antd-mobile'
 import styled from 'styled-components'
 
 export const OVOContainer = styled.main`
-	padding: 19px 15px;
+	padding: 0.19rem 0.15rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -20,30 +20,30 @@ export const OVOContainer = styled.main`
 		align-self: flex-start;
 		display: flex;
 		> p {
-			font-size: 17px;
+			font-size: 0.17rem;
 			font-weight: bold;
 			color: rgba(0, 0, 0, 0.9);
-			margin: 0 8px 17px 0;
+			margin: 0 0.08rem 0.17rem 0;
 		}
 		> img {
-			width: 38px;
-			height: 23px;
+			width: 0.38rem;
+			height: 0.23rem;
 		}
 	}
 	.ovo_phoneTitle {
 		align-self: flex-start;
-		font-size: 15px;
+		font-size: 0.15rem;
 		font-weight: bold;
 		color: rgba(0, 0, 0, 0.9);
-		margin-bottom: 10px;
+		margin-bottom: 0.1rem;
 	}
 	.ovo_btn {
 		width: 100%;
 		text-align: center;
 		> p {
-			font-size: 15px;
+			font-size: 0.15rem;
 			color: #3180ff;
-			margin-top: 10px;
+			margin-top: 0.1rem;
 		}
 	}
 `
@@ -87,18 +87,20 @@ export const OVOBgcContainer = styled.section`
 `
 
 export const CInput = styled(Input)`
-	border-radius: 6px 6px 6px 6px;
-	border: 1px solid #3180ff;
-	font-size: 15px;
+	border-radius: 0.06rem 0.06rem 0.06rem 0.06rem;
+	border: 0.01rem solid #3180ff;
+	font-size: 0.15rem;
 	color: rgba(0, 0, 0, 0.5);
-	padding: 8px;
+	padding: 0.08rem;
 `
-export const CButton = styled(Button)`
+export const CButton = styled(Button)<{
+	width?: string
+}>`
 	background: #3180ff;
-	border-radius: 6px 6px 6px 6px;
-	width: 55%;
-	font-size: 15px;
+	border-radius: 0.06rem 0.06rem 0.06rem 0.06rem;
+	width: ${props => props.width || '55%'};
+	font-size: 0.15rem;
 	color: #ffffff;
-	padding: 14px 0;
-	margin-top: 19px;
+	padding: 0.14rem 0;
+	margin-top: 0.19rem;
 `

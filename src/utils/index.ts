@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ITime, ICbTime } from './type'
+import { Toast } from 'antd-mobile'
 
 /*
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:40
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-31 10:10:19
+ * @LastEditTime: 2023-06-01 16:25:57
  * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
  * @Description:
  *
@@ -18,6 +19,7 @@ export const copyText = (data: string) => {
 	document.body.appendChild(oInput)
 	oInput.select()
 	document.execCommand('Copy')
+	Toast.show('copy')
 	oInput.remove()
 }
 

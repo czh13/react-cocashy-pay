@@ -2,14 +2,15 @@
  * @Author: caizhihao
  * @Date: 2023-05-31 15:18:58
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-31 17:24:28
- * @FilePath: \react\react-cocashy-pay\src\views\detail\component\VA\index.tsx
+ * @LastEditTime: 2023-06-01 16:32:13
+ * @FilePath: \react\react-cocashy-pay\src\views\pay\component\VA\index.tsx
  * @Description:
  *
  */
 import { BgcContainer } from '@/components/css'
 import { VAContainer } from './css'
-import { GetPayRes } from '@/api/type'
+import { GetPayOrderRes } from '@/api/type'
+import { copyText } from '@/utils'
 
 const logoUrlMap = {
 	AlfaGroupVA: require('@/assets/img/ico_alfa_copy@2x.png'),
@@ -23,8 +24,12 @@ const logoUrlMap = {
 	BNIVA: require('@/assets/img/ico_bni_copy@2x.png'),
 }
 
-export const VA = ({ data }: { data: GetPayRes }) => {
+export const VA = ({ data }: { data: GetPayOrderRes }) => {
 	const { payProCode, payCode } = data
+	const handleCopy = () => {
+		copyText(payCode)
+	}
+
 	return (
 		<BgcContainer>
 			<VAContainer>
@@ -32,7 +37,7 @@ export const VA = ({ data }: { data: GetPayRes }) => {
 					<img src={logoUrlMap[payProCode as keyof typeof logoUrlMap]} alt="" />
 					<p>Virtual Account</p>
 				</div>
-				<div className="va_paycode">
+				<div className="va_paycode" onClick={() => handleCopy()}>
 					<div>{payCode}</div>
 					<div>Copy</div>
 				</div>
