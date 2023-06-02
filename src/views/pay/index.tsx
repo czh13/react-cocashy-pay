@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-29 21:16:53
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-01 16:24:12
+ * @LastEditTime: 2023-06-02 11:58:33
  * @FilePath: \react\react-cocashy-pay\src\views\pay\index.tsx
  * @Description:
  *
@@ -15,7 +15,6 @@ import { RegisterCard } from '@/components/registerCard'
 import { RegisterLang } from '@/components/registerLang'
 import { GetOrderRes, GetPayOrderRes } from '@/api/type'
 import { useState, useEffect } from 'react'
-import { GetPayRes } from '../../api/type'
 import { OVO } from './component/OVO'
 import { VA } from './component/VA'
 import { QRIS } from './component/QRIS'
@@ -24,7 +23,7 @@ import { Toast } from 'antd-mobile'
 import { useInterval } from '@/utils'
 import { RegisteSuccess } from '@/components/registerSuccess'
 
-export const Pay = () => {
+export const Pay: React.FC = () => {
 	// 数据声明
 	const { orderNo } = useParams()
 	const { state } = useLocation()

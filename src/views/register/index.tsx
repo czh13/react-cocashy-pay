@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-31 14:31:23
+ * @LastEditTime: 2023-06-02 11:58:53
  * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
@@ -22,7 +22,7 @@ import { useInterval } from '../../utils/index'
 import { RegisteSuccess } from '../../components/registerSuccess/index'
 import { BgcContainer } from '@/components/css'
 
-export const Register = () => {
+export const Register: React.FC = () => {
 	const { orderNo } = useParams()
 	const [registerData, setRegisterData] = useState<GetOrderRes | null>(null)
 	const [cardInfo, setCardInfo] = useState<Partial<GetOrderRes> | null>(null)

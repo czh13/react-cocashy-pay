@@ -11,7 +11,9 @@ import styled from 'styled-components'
 import img_success from '@/assets/img/img_success@2x.png'
 import { BgcContainer } from '../css'
 import { GetOrderRes } from '@/api/type'
-export const RegisteSuccess = ({ cardInfo }: { cardInfo: Partial<GetOrderRes> | null }) => {
+import { PropsType } from '../type'
+
+export const RegisteSuccess: React.FC<PropsType> = ({ cardInfo }: { cardInfo: Partial<GetOrderRes> | null }) => {
 	return (
 		<BgcContainer>
 			<RegisteSuccessContainer>

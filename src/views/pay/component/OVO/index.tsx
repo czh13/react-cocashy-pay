@@ -2,20 +2,20 @@
  * @Author: caizhihao
  * @Date: 2023-05-31 15:18:58
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-01 11:44:59
+ * @LastEditTime: 2023-06-02 12:18:25
  * @FilePath: \react\react-cocashy-pay\src\views\pay\component\OVO\index.tsx
  * @Description:
  *
  */
 import { BgcContainer } from '@/components/css'
 import { CButton, CInput, OVOBgcContainer, OVOContainer } from './css'
-import { GetPayOrderRes } from '@/api/type'
 import ovo_2 from '@/assets/img/ovo_2@2x.png'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { payDeskPushOrder } from '@/api/register'
+import { PropsType } from '../type'
 
-export const OVO = ({ data }: { data: GetPayOrderRes }) => {
+export const OVO: React.FC<PropsType> = ({ data }) => {
 	const { amount, pushNumber, orderNo, payProCode } = data
 	const [value, setValue] = useState<string>(pushNumber || '')
 	const navigate = useNavigate()

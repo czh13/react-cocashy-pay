@@ -1,3 +1,12 @@
+/*
+ * @Author: caizhihao
+ * @Date: 2023-05-22 11:37:54
+ * @LastEditors: caizhihao 177745994@qq.com
+ * @LastEditTime: 2023-06-02 12:08:15
+ * @FilePath: \react\react-cocashy-pay\.eslintrc.js
+ * @Description:
+ *
+ */
 module.exports = {
 	env: {
 		browser: true,
@@ -16,5 +25,6 @@ module.exports = {
 		'@typescript-eslint/no-var-requires': 0,
 		'@typescript-eslint/no-explicit-any': ['off'],
 		'@typescript-eslint/no-non-null-assertion': ['off'],
+		'react/prop-types': 'off',
 	},
 }

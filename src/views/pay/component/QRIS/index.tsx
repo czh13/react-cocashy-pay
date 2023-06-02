@@ -2,18 +2,18 @@
  * @Author: caizhihao
  * @Date: 2023-05-31 15:18:58
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-01 17:17:09
+ * @LastEditTime: 2023-06-02 12:18:29
  * @FilePath: \react\react-cocashy-pay\src\views\pay\component\QRIS\index.tsx
  * @Description:
  *
  */
 import { BgcContainer } from '@/components/css'
 import { QRISContainer } from './css'
-import { GetPayOrderRes } from '@/api/type'
 import QRCode from 'qrcode.react'
 import { CButton } from '../OVO/css'
+import { PropsType } from '../type'
 
-export const QRIS = ({ data }: { data: GetPayOrderRes }) => {
+export const QRIS: React.FC<PropsType> = ({ data }) => {
 	const { payCode } = data
 	console.log(data)
 	return (

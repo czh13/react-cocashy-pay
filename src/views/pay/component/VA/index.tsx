@@ -2,15 +2,15 @@
  * @Author: caizhihao
  * @Date: 2023-05-31 15:18:58
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-01 16:32:13
+ * @LastEditTime: 2023-06-02 12:18:45
  * @FilePath: \react\react-cocashy-pay\src\views\pay\component\VA\index.tsx
  * @Description:
  *
  */
 import { BgcContainer } from '@/components/css'
 import { VAContainer } from './css'
-import { GetPayOrderRes } from '@/api/type'
 import { copyText } from '@/utils'
+import { PropsType } from '../type'
 
 const logoUrlMap = {
 	AlfaGroupVA: require('@/assets/img/ico_alfa_copy@2x.png'),
@@ -24,7 +24,7 @@ const logoUrlMap = {
 	BNIVA: require('@/assets/img/ico_bni_copy@2x.png'),
 }
 
-export const VA = ({ data }: { data: GetPayOrderRes }) => {
+export const VA: React.FC<PropsType> = ({ data }) => {
 	const { payProCode, payCode } = data
 	const handleCopy = () => {
 		copyText(payCode)

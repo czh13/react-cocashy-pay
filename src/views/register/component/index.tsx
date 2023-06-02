@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-26 18:12:17
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-31 18:15:11
+ * @LastEditTime: 2023-06-02 12:00:48
  * @FilePath: \react\react-cocashy-pay\src\views\register\component\index.tsx
  * @Description:
  *
@@ -12,7 +12,13 @@ import { MethodTypeContainer } from './css'
 import { useParams, useNavigate } from 'react-router-dom'
 import { GetOrder, getPay } from '@/api/register'
 
-export const PayMethod = ({ list, clearIntervalHandler, setOrederStatus }: { list: ListType[]; clearIntervalHandler: () => void; setOrederStatus: (s: string) => void }) => {
+interface PropsType {
+	list: ListType[]
+	clearIntervalHandler: () => void
+	setOrederStatus: (s: string) => void
+}
+
+export const PayMethod: React.FC<PropsType> = ({ list, clearIntervalHandler, setOrederStatus }) => {
 	const { orderNo } = useParams()
 	const navigate = useNavigate()
 	const handleDetail = (payProCode: string) => {

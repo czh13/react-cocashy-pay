@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-25 11:54:01
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-30 21:15:50
+ * @LastEditTime: 2023-06-02 12:16:29
  * @FilePath: \react\react-cocashy-pay\src\components\registerLang\index.tsx
  * @Description:
  *
@@ -12,10 +12,14 @@ import bar_icon_cut from '@/assets/img/bar_icon_cut@2x.png'
 import { Popover } from 'antd-mobile'
 import { Action } from 'antd-mobile/es/components/popover'
 import { RegisterLangContainer } from './css'
-import { GetOrderRes } from '@/api/type'
 import { useCountDown } from '@/utils'
+import { PropsType } from '../type'
 
-export const RegisterLang = ({ cardInfo, setRegisterData }: { cardInfo: Partial<GetOrderRes> | null; setRegisterData: (obj: null) => void }) => {
+interface PropsTypeLang extends PropsType {
+	setRegisterData: (obj: null) => void
+}
+
+export const RegisterLang: React.FC<PropsTypeLang> = ({ cardInfo, setRegisterData }) => {
 	const actions: Action[] = [{ key: 'en-ID', text: 'Indonesian' }]
 
 	const handleAction = (node: Partial<Action>) => {

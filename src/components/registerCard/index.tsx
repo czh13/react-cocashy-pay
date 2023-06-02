@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-24 16:45:51
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-31 12:07:48
+ * @LastEditTime: 2023-06-02 12:15:35
  * @FilePath: \react\react-cocashy-pay\src\components\registerCard\index.tsx
  * @Description:
  *
@@ -11,8 +11,9 @@
 import { GetOrderRes } from '@/api/type'
 import { toThousands } from '@/utils'
 import styled from 'styled-components'
+import { PropsType } from '../type'
 
-export const RegisterCard = ({ cardInfo }: { cardInfo: Partial<GetOrderRes> | null }) => {
+export const RegisterCard: React.FC<PropsType> = ({ cardInfo }) => {
 	return (
 		<RCContainer>
 			<main>
