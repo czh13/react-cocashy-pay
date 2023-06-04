@@ -1,9 +1,9 @@
 /*
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
- * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-02 11:58:53
- * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
+ * @LastEditors: 177745994@qq.com 177745994@qq.com
+ * @LastEditTime: 2023-06-03 18:48:42
+ * @FilePath: /react-cocashy-pay/src/views/register/index.tsx
  * @Description:
  *
  */
@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom'
 import { RegisterCard } from '../../components/registerCard/index'
 import { RegisterLang } from '../../components/registerLang/index'
 import { MethodContainer, RegisterContainer } from './css'
-import { useEffect, useState } from 'react'
+import { Dispatch, createContext, useEffect, useState } from 'react'
 import { GetOrder } from '@/api/register'
 import { GetOrderRes } from '@/api/type'
 import { Toast } from 'antd-mobile'
@@ -21,14 +21,24 @@ import { RegisterInvalid } from '@/components/registerInvalid'
 import { useInterval } from '../../utils/index'
 import { RegisteSuccess } from '../../components/registerSuccess/index'
 import { BgcContainer } from '@/components/css'
+import { CardInfo, ListType } from './type'
+import { All, SET_CARDINFO, CLEAR_CARDINFO } from '@/store/actions'
+import { connect } from 'react-redux'
+import { CState } from '@/store/reducer'
 
-export const Register: React.FC = () => {
+// 本质是个组件，所以放外面，当props需要层层传递时，可以使用该hook直接获取
+export const ListContext = createContext<ListType[]>([])
+
+const Register: React.FC<any> = props => {
+	console.log(props)
+
 	const { orderNo } = useParams()
 	const [registerData, setRegisterData] = useState<GetOrderRes | null>(null)
 	const [cardInfo, setCardInfo] = useState<Partial<GetOrderRes> | null>(null)
 	const [orederStatus, setOrederStatus] = useState('PAYING')
 	const info = registerData && useCardInfo(registerData)
 	const methodInfoList = registerData && useGetMethodList(registerData.payProCodeList)
+	console.log(typeof {})
 	// 定时循环hook
 	const [clearIntervalHandler] = useInterval(async () => {
 		const { data, code } = await GetOrder({ orderNo: orderNo! })
@@ -87,6 +97,9 @@ export const Register: React.FC = () => {
 													<img src={method.img} alt="" />
 													<p>{method.title}</p>
 												</div>
+												{/* <ListContext.Provider value={method.list}>
+													<PayMethod clearIntervalHandler={clearIntervalHandler} setOrederStatus={setOrederStatus} />
+												</ListContext.Provider> */}
 												<PayMethod list={method.list} clearIntervalHandler={clearIntervalHandler} setOrederStatus={setOrederStatus} />
 											</main>
 										</BgcContainer>
@@ -104,3 +117,17 @@ export const Register: React.FC = () => {
 		</>
 	)
 }
+
+// 返回对象
+const mapDispatchToProps = (dispatch: Dispatch<All>) => ({
+	SET_CARDINFO: (payload: CardInfo) => dispatch(SET_CARDINFO(payload)),
+	CLEAR_CARDINFO: () => dispatch(CLEAR_CARDINFO()),
+	// SET_CARDINFO: () => dispatch({type: 'SET_CARDINFO}),
+	// CLEAR_CARDINFO: () => dispatch({type:'CLEAR_CARDINFO'}),
+})
+
+const mapStateToProps = (state: CState) => ({
+	cardInfo: state.cardInfo,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

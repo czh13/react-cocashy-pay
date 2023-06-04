@@ -1,15 +1,15 @@
 /*
  * @Author: caizhihao
  * @Date: 2023-05-23 20:36:09
- * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-01 16:15:18
- * @FilePath: \react\react-cocashy-pay\src\router\index.tsx
+ * @LastEditors: 177745994@qq.com 177745994@qq.com
+ * @LastEditTime: 2023-06-03 17:49:51
+ * @FilePath: /react-cocashy-pay/src/router/index.tsx
  * @Description:
  *
  */
 import { useRoutes, Navigate } from 'react-router-dom'
 import { RouteObject } from './type'
-import { Register } from '@/views/register'
+import Register from '@/views/register'
 import { Pay } from '@/views/pay'
 import { Middle } from '../views/middle/index'
 

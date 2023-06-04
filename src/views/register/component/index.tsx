@@ -1,9 +1,9 @@
 /*
  * @Author: caizhihao
  * @Date: 2023-05-26 18:12:17
- * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-02 12:00:48
- * @FilePath: \react\react-cocashy-pay\src\views\register\component\index.tsx
+ * @LastEditors: 177745994@qq.com 177745994@qq.com
+ * @LastEditTime: 2023-06-03 16:08:13
+ * @FilePath: /react-cocashy-pay/src/views/register/component/index.tsx
  * @Description:
  *
  */
@@ -11,9 +11,11 @@ import { ListType } from '../type'
 import { MethodTypeContainer } from './css'
 import { useParams, useNavigate } from 'react-router-dom'
 import { GetOrder, getPay } from '@/api/register'
+import { useContext } from 'react'
+import { ListContext } from '..'
 
 interface PropsType {
-	list: ListType[]
+	list?: ListType[]
 	clearIntervalHandler: () => void
 	setOrederStatus: (s: string) => void
 }
@@ -21,6 +23,11 @@ interface PropsType {
 export const PayMethod: React.FC<PropsType> = ({ list, clearIntervalHandler, setOrederStatus }) => {
 	const { orderNo } = useParams()
 	const navigate = useNavigate()
+
+	// 使用context数据，参数传入通过createContext创建的
+	// const List = useContext(ListContext)
+	// console.log(List)
+
 	const handleDetail = (payProCode: string) => {
 		// 跳转前判断该订单是否已支付成功
 		const checkStatus = async () => {
@@ -58,7 +65,7 @@ export const PayMethod: React.FC<PropsType> = ({ list, clearIntervalHandler, set
 
 	return (
 		<MethodTypeContainer>
-			{list.map(item => {
+			{list?.map(item => {
 				return (
 					<div key={item.code} className="pm_type" onClick={() => handleDetail(item.code)}>
 						<img src={item.imgUrl} alt="" />

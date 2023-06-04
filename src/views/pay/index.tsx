@@ -1,9 +1,9 @@
 /*
  * @Author: caizhihao
  * @Date: 2023-05-29 21:16:53
- * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-02 11:58:33
- * @FilePath: \react\react-cocashy-pay\src\views\pay\index.tsx
+ * @LastEditors: 177745994@qq.com 177745994@qq.com
+ * @LastEditTime: 2023-06-03 15:47:21
+ * @FilePath: /react-cocashy-pay/src/views/pay/index.tsx
  * @Description:
  *
  */
@@ -14,7 +14,7 @@ import { RegisterInvalid } from '@/components/registerInvalid'
 import { RegisterCard } from '@/components/registerCard'
 import { RegisterLang } from '@/components/registerLang'
 import { GetOrderRes, GetPayOrderRes } from '@/api/type'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { OVO } from './component/OVO'
 import { VA } from './component/VA'
 import { QRIS } from './component/QRIS'
