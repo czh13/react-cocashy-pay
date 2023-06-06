@@ -1,9 +1,9 @@
 /*
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
- * @LastEditors: 177745994@qq.com 177745994@qq.com
- * @LastEditTime: 2023-06-03 18:48:42
- * @FilePath: /react-cocashy-pay/src/views/register/index.tsx
+ * @LastEditors: caizhihao 177745994@qq.com
+ * @LastEditTime: 2023-06-05 20:43:09
+ * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
  */
@@ -22,15 +22,19 @@ import { useInterval } from '../../utils/index'
 import { RegisteSuccess } from '../../components/registerSuccess/index'
 import { BgcContainer } from '@/components/css'
 import { CardInfo, ListType } from './type'
-import { All, SET_CARDINFO, CLEAR_CARDINFO } from '@/store/actions'
-import { connect } from 'react-redux'
+import { All, SET_CARDINFO, CLEAR_CARDINFO, SET_ASYNC_CARDINFO } from '@/store/actions'
+import { connect, useDispatch } from 'react-redux'
 import { CState } from '@/store/reducer'
+import { GetOrderQuery } from '../../api/type'
 
 // 本质是个组件，所以放外面，当props需要层层传递时，可以使用该hook直接获取
 export const ListContext = createContext<ListType[]>([])
 
-const Register: React.FC<any> = props => {
-	console.log(props)
+// 使用connect
+// const Register: React.FC<any> = props => {
+// 使用useDispatch
+export const Register: React.FC<any> = () => {
+	const dispatch: Dispatch<any> = useDispatch()
 
 	const { orderNo } = useParams()
 	const [registerData, setRegisterData] = useState<GetOrderRes | null>(null)
@@ -38,7 +42,6 @@ const Register: React.FC<any> = props => {
 	const [orederStatus, setOrederStatus] = useState('PAYING')
 	const info = registerData && useCardInfo(registerData)
 	const methodInfoList = registerData && useGetMethodList(registerData.payProCodeList)
-	console.log(typeof {})
 	// 定时循环hook
 	const [clearIntervalHandler] = useInterval(async () => {
 		const { data, code } = await GetOrder({ orderNo: orderNo! })
@@ -61,6 +64,9 @@ const Register: React.FC<any> = props => {
 	useEffect(() => {
 		const getOrder = async () => {
 			Toast.show({ icon: 'loading', maskClickable: false, duration: 0 })
+			// props.SET_ASYNC_CARDINFO({ orderNo: orderNo! }) //不用hook方法
+			dispatch(SET_ASYNC_CARDINFO({ orderNo: orderNo! })) //使用useDispatch
+			// dispatch(CLEAR_CARDINFO())
 			const { data, code } = await GetOrder({ orderNo: orderNo! })
 			Toast.clear()
 			if (code !== 200) {
@@ -78,9 +84,6 @@ const Register: React.FC<any> = props => {
 
 	return (
 		<>
-			{/* <div style={{ width: '200px', height: '200px' }}>
-				距离任务结束 {d}天<i>{h < 10 ? '0' + h : h}</i>:<i>{m < 10 ? '0' + m : m}</i>:<i>{s < 10 ? '0' + s : s}</i>
-			</div> */}
 			{registerData && orderNo ? (
 				<RegisterContainer>
 					<RegisterLang cardInfo={cardInfo} setRegisterData={setRegisterData} />
@@ -118,16 +121,19 @@ const Register: React.FC<any> = props => {
 	)
 }
 
+// 使用useDispatch，就不用使用connect
 // 返回对象
-const mapDispatchToProps = (dispatch: Dispatch<All>) => ({
-	SET_CARDINFO: (payload: CardInfo) => dispatch(SET_CARDINFO(payload)),
-	CLEAR_CARDINFO: () => dispatch(CLEAR_CARDINFO()),
-	// SET_CARDINFO: () => dispatch({type: 'SET_CARDINFO}),
-	// CLEAR_CARDINFO: () => dispatch({type:'CLEAR_CARDINFO'}),
-})
+// const mapDispatchToProps = (dispatch: Dispatch<All>) => ({
+// const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+// 	SET_CARDINFO: (payload: CardInfo) => dispatch(SET_CARDINFO(payload)), //同步
+// 	SET_ASYNC_CARDINFO: (query: GetOrderQuery) => dispatch(SET_ASYNC_CARDINFO(query)), //异步
+// 	CLEAR_CARDINFO: () => dispatch(CLEAR_CARDINFO()),
+// 	// SET_CARDINFO: () => dispatch({type: 'SET_CARDINFO}),
+// 	// CLEAR_CARDINFO: () => ({ type: 'CLEAR_CARDINFO' }),
+// })
 
-const mapStateToProps = (state: CState) => ({
-	cardInfo: state.cardInfo,
-})
+// const mapStateToProps = (state: CState) => ({
+// 	cardInfo: state.cardInfo,
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+// export default connect(mapStateToProps, mapDispatchToProps)(Register)

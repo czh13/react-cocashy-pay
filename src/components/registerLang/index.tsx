@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-25 11:54:01
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-02 12:16:29
+ * @LastEditTime: 2023-06-05 15:53:27
  * @FilePath: \react\react-cocashy-pay\src\components\registerLang\index.tsx
  * @Description:
  *
