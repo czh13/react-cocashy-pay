@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-24 16:45:51
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-05 20:54:54
+ * @LastEditTime: 2023-06-07 12:10:49
  * @FilePath: \react\react-cocashy-pay\src\components\registerCard\index.tsx
  * @Description:
  *
@@ -12,15 +12,16 @@ import { GetOrderRes } from '@/api/type'
 import { toThousands } from '@/utils'
 import styled from 'styled-components'
 import { PropsType } from '../type'
-import store from '@/store'
+// import store from '@/store'
+import store from '@/store_combineReducers'
 import { useSelector } from 'react-redux'
 import { CState } from '@/store/reducer'
 
 export const RegisterCard: React.FC<PropsType> = ({ cardInfo }) => {
 	// 方法1，通过store获取state
-	// console.log(store.getState().cardInfo)
+	console.log(store.getState())
 	// 方法2，通过useSelector获取state
-	const state: CState = useSelector(state => state)
+	// const state = useSelector(state => state)
 	// console.log(state)
 	return (
 		<RCContainer>

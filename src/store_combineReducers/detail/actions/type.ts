@@ -9,8 +9,8 @@
  */
 
 // 声明常量类型actionType，并且直接声明常量
-export const SET_CARDINFO = 'SET_CARDINFO'
-export type SET_CARDINFO = typeof SET_CARDINFO
+export const SET_DETAILINFO = 'SET_DETAILINFO'
+export type SET_DETAILINFO = typeof SET_DETAILINFO
 
-export const CLEAR_CARDINFO = 'CLEAR_CARDINFO'
-export type CLEAR_CARDINFO = typeof CLEAR_CARDINFO
+export const CLEAR_DETAILINFO = 'CLEAR_DETAILINFO'
+export type CLEAR_DETAILINFO = typeof CLEAR_DETAILINFO

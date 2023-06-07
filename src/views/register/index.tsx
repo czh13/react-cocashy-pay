@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-05 20:43:09
+ * @LastEditTime: 2023-06-07 12:15:49
  * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
@@ -22,10 +22,15 @@ import { useInterval } from '../../utils/index'
 import { RegisteSuccess } from '../../components/registerSuccess/index'
 import { BgcContainer } from '@/components/css'
 import { CardInfo, ListType } from './type'
+
+// redux相关
 import { All, SET_CARDINFO, CLEAR_CARDINFO, SET_ASYNC_CARDINFO } from '@/store/actions'
+import { SET_ASYNC_HOMEINFO } from '@/store_combineReducers/home/actions'
+import { SET_ASYNC_DETAILINFO } from '@/store_combineReducers/detail/actions'
 import { connect, useDispatch } from 'react-redux'
 import { CState } from '@/store/reducer'
 import { GetOrderQuery } from '../../api/type'
+import store from '@/store'
 
 // 本质是个组件，所以放外面，当props需要层层传递时，可以使用该hook直接获取
 export const ListContext = createContext<ListType[]>([])
@@ -67,6 +72,11 @@ export const Register: React.FC<any> = () => {
 			// props.SET_ASYNC_CARDINFO({ orderNo: orderNo! }) //不用hook方法
 			dispatch(SET_ASYNC_CARDINFO({ orderNo: orderNo! })) //使用useDispatch
 			// dispatch(CLEAR_CARDINFO())
+
+			// 分片
+			dispatch(SET_ASYNC_HOMEINFO({ orderNo: orderNo! }))
+			dispatch(SET_ASYNC_DETAILINFO({ orderNo: orderNo! }))
+
 			const { data, code } = await GetOrder({ orderNo: orderNo! })
 			Toast.clear()
 			if (code !== 200) {

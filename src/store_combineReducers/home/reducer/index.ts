@@ -2,8 +2,8 @@
  * @Author: 177745994@qq.com
  * @Date: 2023-06-03 16:16:44
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-07 11:11:40
- * @FilePath: \react\react-cocashy-pay\src\store\reducer\index.ts
+ * @LastEditTime: 2023-06-07 12:06:54
+ * @FilePath: \react\react-cocashy-pay\src\store_combineReducers\home\reducer\index.ts
  * @Description:
  *
  */
@@ -21,23 +21,18 @@ import * as ActionTypes from '../actions/type'
 export type CState = Readonly<typeof initState>
 
 const initState = {
-	cardInfo: {} as CardInfo,
+	homeInfo: {} as CardInfo,
 }
 
 // reducer是一个函数，返回操作后的新的state
 export const reducer = (state = initState, action: Actions.All) => {
 	// 有数据进行更新时，返回一个新的state
 	switch (action.type) {
-		case ActionTypes.SET_CARDINFO:
-			return { cardInfo: { ...state.cardInfo, ...action.payload } }
-		case ActionTypes.CLEAR_CARDINFO:
-			return { cardInfo: {} }
+		case ActionTypes.SET_HOMEINFO:
+			return { homeInfo: { ...state.homeInfo, ...action.payload } }
+		case ActionTypes.CLEAR_HOMEINFO:
+			return { homeInfo: {} }
 		default:
 			return state
 	}
 }
-
-// export const reducer = combineReducers({
-// 	counterInfo: counterReducer,
-// 	homeInfo: homeReducer,
-// })
