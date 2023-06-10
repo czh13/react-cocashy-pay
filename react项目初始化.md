@@ -2,13 +2,13 @@
  * @Author: caizhihao
  * @Date: 2023-02-10 15:43:24
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-24 19:49:37
- * @FilePath: \react\code\react项目初始化.md
+ * @LastEditTime: 2023-06-07 14:23:04
+ * @FilePath: \react\react-cocashy-pay\react项目初始化.md
  * @Description:
  *
 -->
 
-create-react-app music-web-pc
+create-react-app xxx
 npx create-react-app xxx --template typescript
 
 npx eslint --init
@@ -26,6 +26,8 @@ yarn add react-router-config
 yarn add redux react-redux
 
 yarn add redux-thunk
+
+yarn add @redux/toolkit
 
 yarn add styled-components
 

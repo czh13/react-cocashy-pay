@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-07 12:15:49
+ * @LastEditTime: 2023-06-09 14:42:20
  * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
@@ -40,7 +40,6 @@ export const ListContext = createContext<ListType[]>([])
 // 使用useDispatch
 export const Register: React.FC<any> = () => {
 	const dispatch: Dispatch<any> = useDispatch()
-
 	const { orderNo } = useParams()
 	const [registerData, setRegisterData] = useState<GetOrderRes | null>(null)
 	const [cardInfo, setCardInfo] = useState<Partial<GetOrderRes> | null>(null)
@@ -60,19 +59,18 @@ export const Register: React.FC<any> = () => {
 		}
 	}, 10000)
 
-	// 副作用
+	// * 副作用
 	useEffect(() => {
 		setCardInfo(info)
 	}, [registerData])
 
-	// 副作用
+	// * 副作用
 	useEffect(() => {
 		const getOrder = async () => {
 			Toast.show({ icon: 'loading', maskClickable: false, duration: 0 })
 			// props.SET_ASYNC_CARDINFO({ orderNo: orderNo! }) //不用hook方法
-			dispatch(SET_ASYNC_CARDINFO({ orderNo: orderNo! })) //使用useDispatch
+			// dispatch(SET_ASYNC_CARDINFO({ orderNo: orderNo! })) //使用useDispatch
 			// dispatch(CLEAR_CARDINFO())
-
 			// 分片
 			dispatch(SET_ASYNC_HOMEINFO({ orderNo: orderNo! }))
 			dispatch(SET_ASYNC_DETAILINFO({ orderNo: orderNo! }))
