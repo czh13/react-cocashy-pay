@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-09 14:42:20
+ * @LastEditTime: 2023-06-14 14:24:02
  * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
@@ -14,7 +14,7 @@ import { MethodContainer, RegisterContainer } from './css'
 import { Dispatch, createContext, useEffect, useState } from 'react'
 import { GetOrder } from '@/api/register'
 import { GetOrderRes } from '@/api/type'
-import { Toast } from 'antd-mobile'
+import { Button, Toast } from 'antd-mobile'
 import { useCardInfo, useGetMethodList } from './utils'
 import { PayMethod } from './component'
 import { RegisterInvalid } from '@/components/registerInvalid'
@@ -31,6 +31,7 @@ import { connect, useDispatch } from 'react-redux'
 import { CState } from '@/store/reducer'
 import { GetOrderQuery } from '../../api/type'
 import store from '@/store'
+import { clearCardInfo, getInfo } from '@/store_toolkit/slice/cardInfoSlice'
 
 // 本质是个组件，所以放外面，当props需要层层传递时，可以使用该hook直接获取
 export const ListContext = createContext<ListType[]>([])
@@ -92,6 +93,9 @@ export const Register: React.FC<any> = () => {
 
 	return (
 		<>
+			<Button onClick={() => dispatch(getInfo({ orderNo: orderNo! }))}>异步</Button>
+			<Button onClick={() => dispatch(clearCardInfo())}>清空</Button>
+
 			{registerData && orderNo ? (
 				<RegisterContainer>
 					<RegisterLang cardInfo={cardInfo} setRegisterData={setRegisterData} />

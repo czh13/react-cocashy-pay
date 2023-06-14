@@ -6,7 +6,7 @@ import { Toast } from 'antd-mobile'
  * @Author: caizhihao
  * @Date: 2023-05-22 18:05:40
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-10 11:49:37
+ * @LastEditTime: 2023-06-12 15:30:26
  * @FilePath: \react\react-cocashy-pay\src\utils\index.ts
  * @Description:
  *
@@ -25,7 +25,7 @@ export const copyText = (data: string) => {
 
 //千分位
 export const toThousands = (num: number, pointLength: number) => {
-	if (!num) return '0'
+	if (!num) return 0
 	const _value = num.toString()
 	const tempArr = _value.split('.')
 	const startValue = tempArr[0].replace(/(\d)(?=(?:\d{3})+$)/g, '$1.')

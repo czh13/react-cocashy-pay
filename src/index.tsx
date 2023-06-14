@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-22 09:54:01
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-07 11:47:29
+ * @LastEditTime: 2023-06-13 17:46:10
  * @FilePath: \react\react-cocashy-pay\src\index.tsx
  * @Description:
  *
@@ -16,7 +16,8 @@ import './index.css'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 // import store from './store'
-import store from './store_combineReducers'
+// import store from './store_combineReducers'
+import store from './store_toolkit'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

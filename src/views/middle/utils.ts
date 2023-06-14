@@ -1,3 +1,12 @@
+/*
+ * @Author: caizhihao
+ * @Date: 2023-06-10 14:23:33
+ * @LastEditors: caizhihao 177745994@qq.com
+ * @LastEditTime: 2023-06-12 14:57:46
+ * @FilePath: \react\react-cocashy-pay\src\views\middle\utils.ts
+ * @Description:
+ *
+ */
 import { useRef, useEffect, Dispatch, SetStateAction, useCallback, useState } from 'react'
 
 // 解构出来的current的类型是T
@@ -43,6 +52,7 @@ export const useUnmountedRef = (): { readonly current: boolean } => {
 
 // * useSafeState：使用方法与 useState 的用法完全一致，但在组件卸载后异步回调内的 setState 不再执行，这样可以避免因组件卸载后更新状态而导致的内存泄漏。
 // 函数重载的写法，可以在同一个函数下定义多种类型值，最后汇总到一块
+// 第一行和第二行：是函数签名，声明了函数的输入和输出
 // initialState不是必填、可以是函数
 // todo Dispatch<SetStateAction<S>> 这种写法是对应useState第二个参数写法
 function useSafeState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>]
