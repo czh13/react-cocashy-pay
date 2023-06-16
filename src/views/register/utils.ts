@@ -5,7 +5,7 @@ import { CardInfo, ListType } from './type'
  * @Author: caizhihao
  * @Date: 2023-05-25 11:59:24
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-05-29 21:23:50
+ * @LastEditTime: 2023-06-15 17:02:47
  * @FilePath: \react\react-cocashy-pay\src\views\register\utils.ts
  * @Description:
  *

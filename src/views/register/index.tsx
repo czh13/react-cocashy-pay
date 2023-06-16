@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-14 14:24:02
+ * @LastEditTime: 2023-06-14 15:59:29
  * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
@@ -93,8 +93,8 @@ export const Register: React.FC<any> = () => {
 
 	return (
 		<>
-			<Button onClick={() => dispatch(getInfo({ orderNo: orderNo! }))}>异步</Button>
-			<Button onClick={() => dispatch(clearCardInfo())}>清空</Button>
+			{/* <Button onClick={() => dispatch(getInfo({ orderNo: orderNo! }))}>异步</Button> */}
+			{/* <Button onClick={() => dispatch(clearCardInfo())}>清空</Button> */}
 
 			{registerData && orderNo ? (
 				<RegisterContainer>
