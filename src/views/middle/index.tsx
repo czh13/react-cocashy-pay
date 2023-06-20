@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-06-01 11:40:33
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-13 18:16:30
+ * @LastEditTime: 2023-06-19 17:43:08
  * @FilePath: \react\react-cocashy-pay\src\views\middle\index.tsx
  * @Description:
  *
@@ -14,10 +14,12 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store_toolkit/index'
 import { getInfo } from '@/store_toolkit/slice/cardInfoSlice'
 import { useParams } from 'react-router-dom'
+import { useReducerContext } from '@/store_context&reducer'
 
 export const Middle = () => {
 	const [flag, setFlag] = useState<boolean>(false)
-
+	const { state, dispatch } = useReducerContext()
+	console.log(state)
 	return (
 		<div>
 			<Button onClick={() => setFlag(v => !v)}>切换 {flag ? 'unmount' : 'mount'}</Button>

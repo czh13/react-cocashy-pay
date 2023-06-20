@@ -2,7 +2,7 @@
  * @Author: caizhihao
  * @Date: 2023-05-23 20:24:35
  * @LastEditors: caizhihao 177745994@qq.com
- * @LastEditTime: 2023-06-14 15:59:29
+ * @LastEditTime: 2023-06-19 17:20:46
  * @FilePath: \react\react-cocashy-pay\src\views\register\index.tsx
  * @Description:
  *
@@ -32,6 +32,7 @@ import { CState } from '@/store/reducer'
 import { GetOrderQuery } from '../../api/type'
 import store from '@/store'
 import { clearCardInfo, getInfo } from '@/store_toolkit/slice/cardInfoSlice'
+import { useReducerContext } from '@/store_context&reducer'
 
 // 本质是个组件，所以放外面，当props需要层层传递时，可以使用该hook直接获取
 export const ListContext = createContext<ListType[]>([])
